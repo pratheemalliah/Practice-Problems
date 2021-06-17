@@ -1,0 +1,17 @@
+ 
+function twoSum(nums, target) {
+    let i, sumsMap = {}, len = nums.length;
+    
+    for(i=0;i<len;i++) {
+      
+      if(sumsMap[nums[i]]) {
+        return [sumsMap[nums[i]],i];
+      }
+      
+      sumsMap[target-nums[i]] = i;
+    }
+  return []
+};
+
+
+console.log(twoSum([5,2,2,2,5,3,7,4,5,4],9))
