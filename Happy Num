@@ -1,0 +1,25 @@
+
+function happyNum(n) {
+  let sums = [];
+  while(true) {
+    let sum = 0;
+    while(n) {
+      let index = n%10;
+      sum += index*index;
+      n = Math.floor(n/10);
+      //console.log(sum)
+    }
+    if(sum === 1) {
+      return true;
+    } else if(sums.indexOf(sum) >-1) {
+      return false;
+    }
+    sums.push(sum);
+    n = sum;
+  }
+  return false;
+}
+
+//console.log(happyNum(82))
+
+//console.log(happyNum(29))
