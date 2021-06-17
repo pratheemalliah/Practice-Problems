@@ -1,0 +1,17 @@
+function moveZeroesToEnd(arr){
+  
+  let counter = 0, i = 0, len = arr.length-1;
+  
+  while(i<=len) {
+    if(arr[i] !== 0 ) {
+      arr[counter++] = arr[i];
+    } 
+    i++;
+  }
+  while(counter <= len) {
+     arr[counter++] = 0;
+  }
+  return arr;
+}
+//console.log(moveZeroesToEnd([2,0,0,3,4,0,0,50,1,4]))
+
