@@ -1,0 +1,27 @@
+//[1,2,3,1,4,6]
+//[1,1,2,3,4,6]
+
+function countElements(arr) {
+  
+  arr.sort();
+  
+  let left=0, right=1, count = 0, n = arr.length-1;
+  
+  while(right<n) {
+    if(arr[left] + 1 === arr[right]) {
+      count += (right-left);
+      left= right;
+      right++;
+    } else if(arr[left] === arr[right]) {
+      right++;
+    } else {
+      left = right;
+      right++;
+    }
+  }
+  
+  return count;
+}
+
+console.log(countElements([1,2,3,1,5, 4,6]))
+
