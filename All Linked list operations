@@ -1,0 +1,182 @@
+class Node {
+  constructor(val) {
+    this.value = val;
+    this.next = null;
+  }
+}
+
+class SLL {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0
+  }
+  
+  push(val) {
+    let newNode = new Node(val);
+    let current = this.head;
+    if(current === null) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      while(current.next) {
+        current = current.next;
+      }
+      current.next = newNode;
+      this.tail = newNode;
+    }
+    this.length++;
+    return this;
+  }
+  
+  unshift(val) {
+    let newNode = new Node(val);
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    return this;
+  }
+  
+  shift() {
+    let current = this.head;
+    if(current === null) {
+      return this;
+    } else {
+      this.head = current.next;
+    }
+    this.length--;
+    return this;
+  }
+  
+  pop() {
+    let current = this.head;
+    if(current === null) {
+      return this;
+    } else {
+      while(current.next.next) {
+        current = current.next;
+      }
+      current.next = null;
+      this.tail = current;
+    }
+    this.length--;
+    return this;
+  }
+  
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    
+    let prev=null, next;
+    
+    for(let i=0;i<this.length;i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    return this;
+  }
+  
+  getVal(index) {
+    let current = this.head;
+    if(current === null) return false;
+    
+    for(let i=0;i<this.length;i++) {
+      if(i === index) {
+        return current.value;
+      }
+      current = current.next;
+    }
+    return false;
+  }
+  
+  insert(val, index) {
+    let newNode = new Node(val);
+    
+    let current = this.head;
+    if(current === null) return false;
+    
+     for(let i=0;i<this.length;i++) {
+      if(i+1 === index) {
+        newNode.next = current.next;
+        current.next = newNode;
+        return this;
+      }
+      current = current.next;
+    }
+  }
+  
+  print() {
+    let values =[], current = this.head;
+    while(current) {
+      values.push(current.value);
+      current = current.next;
+    } 
+    console.log(values);
+  }
+  
+  find(val) {
+    let current = this.head;
+    if(current === null) return false;
+    
+     while(current.next) {
+        if(current.value === val) return true;
+        current = current.next;
+     }
+    
+    return false;
+    
+  }
+  
+  findMiddle() {
+//     let current = this.head,
+//     if(current === null) return false;
+//     middle = Math.floor(this.length/2);
+//     for(let i=0;i<=middle;i++) {
+//       current = current.next;
+//     }
+    
+    let first = this.head;
+    if(first === null) return false;
+    let second = first;
+    while(second && second.next) {
+      first = first.next;
+      second = second.next.next;
+    }
+    console.log(first.value);
+  }
+}
+
+
+let sll = new SLL();
+sll.push(3);
+sll.push(4);
+sll.push(5);
+sll.push(13);
+sll.push(14);
+sll.push(15);
+sll.push(149);
+sll.push(151);
+sll.push(1511);
+sll.push(1493);
+sll.push(151666);
+sll.push(1516663);
+sll.print();
+// console.log(sll.getVal(4));
+// sll.pop();
+// sll.shift()
+// sll.unshift(9)
+// sll.print();
+// sll.reverse();
+// sll.print();
+// sll.insert(11,4);
+// sll.print();
+// console.log(sll.find(110));
+sll.findMiddle();
+
+let x = 9, y = 5;
+let result = y ^ (x<y) & -(x<y);
+
+//console.log(result);
